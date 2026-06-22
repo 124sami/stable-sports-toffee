@@ -39,16 +39,13 @@ def update_playlist():
     if current:
         channels.append(current)
 
-    # আসল প্রথম channel remove
-    if len(channels) > 0:
-        channels.pop(0)
-
     output = ["#EXTM3U"]
 
+    # সোর্সের সব চ্যানেল কোনো পরিবর্তন ছাড়াই আউটপুটে যোগ হবে
     for ch in channels:
         output.extend(ch)
 
-    # নিজের channel শেষে add
+    # নিজের কাস্টম চ্যানেলগুলো শেষে যোগ হবে
     for c in CUSTOM_CHANNELS:
         output.append(c["extinf"])
         output.append(c["url"])
